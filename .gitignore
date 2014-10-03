@@ -54,7 +54,7 @@ docs/_build/
 # PyBuilder
 target/
 
-.pyc
+*.pyc
 .idea/
 local_settings.py 
 
