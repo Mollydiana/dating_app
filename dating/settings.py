@@ -30,13 +30,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'dating_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dating_app',
+    'payments',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,11 +79,32 @@ USE_L10N = True
 
 USE_TZ = True
 
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "<your publishable test key>")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "<your secret test key>")
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+
+AUTH_USER_MODEL = 'dating_app.Dater'
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+# APPEND_SLASH = True
 
 STATIC_URL = '/static/'
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, "static", *MEDIA_URL.strip("/").split("/"))
+
+
+#
+# EMAIL STUFF
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'Mollydianaother@gmail.com'
+EMAIL_HOST_PASSWORD = '1Accord1on'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'Mollydianaother@gmail.com'
+
 
 try:
     from local_settings import *
