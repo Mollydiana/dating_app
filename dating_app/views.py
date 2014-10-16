@@ -19,7 +19,6 @@ def theone(request):
     return render(request, 'theone.html')
 
 
-
 def questions(request):
     return render(request, 'questions.html')
 
@@ -29,7 +28,6 @@ def payment(request):
 
 # def charge(request):
 #     return render(request, 'charge.html')
-
 
 
 def register(request):
