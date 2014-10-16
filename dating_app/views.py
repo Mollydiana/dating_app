@@ -34,7 +34,7 @@ def register(request):
     if request.method == 'POST':
         form = EmailUserCreationForm(request.POST)
         if form.is_valid():
-           user = form.save()
+            user = form.save()
 #            user.email_user("Welcome!", "Thank you for signing up for our website.")
 #            text_content = 'Thank you for signing up for our website, {}{}'.format(user.first_name, user.last_name)
 #            html_content = '<h2>Thanks {}{} for signing up!</h2> <div>I hope you enjoy using our site</div>'.format(user.first_name, user.last_name)
