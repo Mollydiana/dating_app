@@ -96,14 +96,6 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "static", *MEDIA_URL.strip("/").split("/"))
 
 
-#
-# EMAIL STUFF
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'Mollydianaother@gmail.com'
-EMAIL_HOST_PASSWORD = '1Accord1on'
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'Mollydianaother@gmail.com'
 
 
 try:
