@@ -1,0 +1,18 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+    <div style="text-align: center">
+    <form method="post" action=".">
+     {% csrf_token %}
+    <table align="center" width="100%" border="0" >
+    {% for field in form %}
+
+           <tr><td align="right" style="padding: 5px;" valign="top">{{ field.label_tag }}</td>
+           <td align="left" valign="top"><span style="padding-left: 10px;">{{ field }}</span></td></tr>
+    {% endfor %}
+    </table>
+        <input type="submit" value="Submit">
+
+    </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+        <div style="text-align: center">
+    <form method="post" action=".">
+     {% csrf_token %}
+    <table align="center" border="0" >
+    {% for field in form %}
+
+           <tr><td align="right" style="padding: 5px;" valign="top">{{ field.label_tag }}</td>
+           <td align="center" valign="top"><span style="padding-left: 3px;">{{ field }}</span></td></tr>
+    {% endfor %}
+    </table>
+        <input type="submit" value="Log in">
+        <p>Not member? <a href="{% url 'register' %}">Register!</a></p>
+
+
+    </form>
+    </div>
+
+
+{% endblock %}

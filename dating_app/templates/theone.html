@@ -1,0 +1,166 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>The One</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCJnj2nWoM86eU8Bq2G4lSNz3udIkZT4YY&sensor=false">
+    </script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster|Lobster+Two:400,700' rel='stylesheet' type='text/css'>
+        <!-- jQuery -->
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'js/clean-blog.min.js' %}"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a style="color: mediumpurple; font-family: 'Lobster', cursive; font-size: 35px; font-weight: bold;  margin-left: 80px; " class="navbar-brand" href="{% url 'home' %}">The One</a>
+                <style type="text/css">body {background-image: url(http://i390.photobucket.com/albums/oo346/kriskamarie/pink-hearts-background.gif);  background-attachment: fixed;}
+                    </style><br>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div style="background-color: #ffffff;" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a style="font-family: 'Lobster Two', cursive; font-size: 20px" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                        <a style="font-family: 'Lobster Two', cursive; font-size: 20px" href="{% url 'video' %}">Info Video</a>
+                    </li>
+                    <li>
+                        <a style="font-family: 'Lobster Two', cursive; font-size: 20px" href="{% url 'questions' %}">Find *The One*</a>
+                    </li>
+                     <li>
+                        <a style="font-family: 'Lobster Two', cursive; font-size: 20px" href="{% url 'payment' %}">VIP accounts</a>
+                    </li>
+                    <li>
+                         <a style="font-family: 'Lobster', cursive; font-size: 24px" href="{% url 'logout' %}" target="_blank">Logout</a>
+                    </li>
+                    {% else %}
+                       <li>
+                        <a style="font-family: 'Lobster Two', cursive; font-size: 20px" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                        <a style="font-family: 'Lobster Two', cursive; font-size: 20px" href="{% url 'video' %}">Info Video</a>
+                    </li>
+                    <li>
+                        <a style="font-family: 'Lobster Two', cursive; font-size: 20px" href="{% url 'questions' %}">Find *The One*</a>
+                    </li>
+                    <li><a style="font-family: 'Lobster', cursive; font-size: 24px" href="{% url 'login' %}" target="_blank">Login</a>
+                    </li>
+                    <li>
+                        <a style="font-family: 'Lobster', cursive; font-size: 24px" href="{% url 'register' %}" target="_blank">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+{% block content %}
+    <h2 align="center" style="margin-top: 100px; font-weight:lighter; color: darkslategray;">Exellent! Here is your new domestic life partner!</h2>
+    <h4 align="center" style="font-weight:lighter; color: darkslategray;">(We've also provided you with ALL of their personal information. Because hey, it's the internet, we can trust you)</h4>
+<div class="matches">
+
+<div align="center" id="theMatch" style="margin: 20px">
+
+</div>
+{{ Object.results }}
+</div>
+
+{% endblock content %}
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Molly Carr ~ Professional Matchmaker ~ 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
