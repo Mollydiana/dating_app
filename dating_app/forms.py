@@ -10,10 +10,8 @@ def validate_name(value):
         raise ValidationError("Please enter a valid name")
 
 
-
 class EmailUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-
 
     class Meta:
         model = Dater
